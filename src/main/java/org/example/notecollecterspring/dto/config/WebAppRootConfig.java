@@ -1,6 +1,7 @@
 package org.example.notecollecterspring.dto.config;
 
 import jakarta.persistence.EntityManagerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,11 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 
 public class WebAppRootConfig {
+
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
+    }
     @Bean
     public DataSource dataSource() {
         var dmbs=new DriverManagerDataSource();
@@ -40,8 +46,8 @@ public class WebAppRootConfig {
         vendorAdapter.setGenerateDdl(true);
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("org.example.notecollecterspring.dto.entity.impl");
+        factory.setJpaVendorAdapter(vendorAdapter); //
+        factory.setPackagesToScan("org.example.notecollecterspring.dto.entity.impl"); //Entity parth
         factory.setDataSource(dataSource());
         return factory;
     }

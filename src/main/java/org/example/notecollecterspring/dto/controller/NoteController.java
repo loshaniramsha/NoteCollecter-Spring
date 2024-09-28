@@ -2,8 +2,6 @@ package org.example.notecollecterspring.dto.controller;
 
 import org.example.notecollecterspring.dto.dto.impl.NoteDTO;
 import org.example.notecollecterspring.dto.service.NotService;
-import org.example.notecollecterspring.dto.service.NoteServiceImpl;
-import org.example.notecollecterspring.dto.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

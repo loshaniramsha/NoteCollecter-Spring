@@ -1,6 +1,7 @@
-package org.example.notecollecterspring.dto.service;
+package org.example.notecollecterspring.dto.service.impl;
 
 import org.example.notecollecterspring.dto.dto.impl.NoteDTO;
+import org.example.notecollecterspring.dto.service.NotService;
 import org.example.notecollecterspring.dto.util.AppUtil;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Service
 
-public class NoteServiceImpl implements NotService{
+public class NoteServiceImpl implements NotService {
 
     private static List<NoteDTO> noteDTOS=new ArrayList<>();
     NoteServiceImpl(){
