@@ -9,6 +9,6 @@ public interface UserService {
     UserDTO saveUser(UserDTO userDTO);
     List<UserDTO> getAllUser();
     UserDTO getUser(String userId);
-    boolean deleteNote(String userId);
-    boolean updateNote(String userId, UserDTO userDTO);
+    void deleteUser(String userId);
+    boolean updatUser(String userId, UserDTO userDTO);
 }
