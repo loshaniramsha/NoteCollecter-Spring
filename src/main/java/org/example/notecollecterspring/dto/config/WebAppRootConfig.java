@@ -41,9 +41,8 @@ public class WebAppRootConfig {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
-
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setJpaVendorAdapter(vendorAdapter); //
+        factory.setJpaVendorAdapter(vendorAdapter); //venderwa connect ktnw
         factory.setPackagesToScan("org.example.notecollecterspring.dto.entity.impl"); //Entity parth
         factory.setDataSource(dataSource());
         return factory;

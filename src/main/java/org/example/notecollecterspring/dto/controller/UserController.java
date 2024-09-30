@@ -61,6 +61,7 @@ public class UserController {
         return userService.getUser(userId);
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
+
     @DeleteMapping(value = "/{userId}")
     public void deleteUser(@PathVariable("userId") String userId){
         userService.deleteUser(userId);
@@ -68,5 +69,36 @@ public class UserController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserDTO> getAllUsers(){
         return userService.getAllUser();
+    }
+
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping(value ="/{userId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void updateUser(
+            @RequestPart("firstName") String firstName,
+            @RequestPart("lastName") String lastName,
+            @RequestPart("email") String email,
+            @RequestPart("password") String password,
+            @RequestPart("profilepic")MultipartFile profilepic,
+            @PathVariable("userId") String userId
+    ){
+        String base64 ="";
+        try {
+            byte [] bytesPropic=profilepic.getBytes();
+            base64 =AppUtil.generateProfilePicToBase64(bytesPropic);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //Todo: Build the object
+        var buildUserDTO= new UserDTO();
+        buildUserDTO.setUserId(userId);
+        buildUserDTO.setFirstName(firstName);
+        buildUserDTO.setLastName(lastName);
+        buildUserDTO.setEmail(email);
+        buildUserDTO.setPassword(password);
+        buildUserDTO.setProfilepic(base64);
+        userService.saveUser(buildUserDTO);
+
     }
 }
